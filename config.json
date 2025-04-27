@@ -1,0 +1,8 @@
+{
+  "db_conn": "postgresql://postgres:ilkilk3213@localhost:5432/FaceRecogApp",
+  "paths": {
+    "embeddings": "embeddings/",
+    "sample": "sample/"
+  },
+  "threshold": 1.07
+}

@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+  <file>Resources/icon.png</file>
+  <!-- tu możesz dodać inne obrazy, np. none.jpg, unknown.jpg -->
+</qresource>
+</RCC>
