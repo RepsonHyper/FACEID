@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, QTimer, QRect, QEvent, QSize
 from PySide6.QtGui import QImage, QPixmap, QIcon, QPainter, QPen, QColor
-import gui.resources_rc  # <-- po prostu ładujemy zasoby do Qt
+
 
 import numpy as np
 from pathlib import Path

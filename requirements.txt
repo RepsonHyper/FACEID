@@ -1,4 +1,6 @@
-psycopg2
-opencv-python
+PySide6
+numpy
+psycopg2-binary
 insightface
-onnxruntime-gpu
+onnxruntime
+opencv-python
