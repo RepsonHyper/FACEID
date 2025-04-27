@@ -1,6 +1,5 @@
 PySide6
 numpy
-psycopg2-binary
+psycopg2
 insightface
-onnxruntime
 opencv-python
