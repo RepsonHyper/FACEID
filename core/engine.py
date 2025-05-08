@@ -2,6 +2,7 @@ import numpy as np
 from pathlib import Path
 from insightface.app import FaceAnalysis
 from core.db_utils import get_all_users
+import psycopg2
 
 class FaceEngine:
     def __init__(self, embeddings_dir: str, threshold: float):

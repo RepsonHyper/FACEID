@@ -2,6 +2,7 @@ from psycopg2.pool import ThreadedConnectionPool
 from datetime import datetime
 import psycopg2
 from datetime import datetime, timezone
+from typing import List
 
 _db_pool = None
 
@@ -69,3 +70,31 @@ def create_person(person_id: str, name: str, last_attendance: datetime):
         conn.commit()
     finally:
         _db_pool.putconn(conn)
+
+def log_access(db_conn_str: str,
+               person_id: str,
+               room_name: str,
+               result: str,
+               reason: str):
+    """
+    Zapisuje do tabeli access_log.
+    result ∈ {'granted','denied','unknown'}.
+    """
+    conn = psycopg2.connect(db_conn_str)
+    cur = conn.cursor()
+    cur.execute("""
+        INSERT INTO access_log (timestamp, person_id, room_name, result, reason)
+        VALUES (now(), %s, %s, %s, %s)
+    """, (person_id, room_name, result, reason))
+    conn.commit()
+    cur.close(); conn.close()
+
+def get_all_rooms(db_conn_str: str) -> List[str]:
+    import psycopg2
+    conn = psycopg2.connect(db_conn_str)
+    cur = conn.cursor()
+    cur.execute("SELECT room_name FROM rooms ORDER BY room_name")
+    rows = [r[0] for r in cur.fetchall()]
+    cur.close()
+    conn.close()
+    return rows
